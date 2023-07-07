@@ -1,5 +1,5 @@
 import random
-            
+
 def game():
     def random_nums():
         players_roll = random.randint(1,6)
