@@ -1,7 +1,5 @@
 import random
 
-import random
-
 def menu():
     print('''Hello, welcome to Craps game!''')
     _ = input('Type yes if you want to play,any key to exit: ')
