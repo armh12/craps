@@ -1,34 +1,43 @@
 import random
-            
-def game():
-    def random_nums():
-        players_roll = random.randint(1,6)
-        casinos_roll = random.randint(1,6)
-        sum_of_both = players_roll + casinos_roll
-        return sum_of_both
-    p_win_combinations = [7,11]
-    c_win_combinations = [2,3,12]
-    sum_of_both = random_nums()
-    if sum_of_both in p_win_combinations:
-        print(f'The sum of dice is {sum_of_both}')
-        print('Player wins!')
-    elif sum_of_both in c_win_combinations:
-        print(f'The sum of dice is {sum_of_both}')
-        print('Casino wins!')
-    else:
-        print(f'Your goal number is {sum_of_both}!')
-        while True:
-            goal_sum = random_nums()
-            if goal_sum == sum_of_both:
-                print(f'The sum of dice is {goal_sum}')
-                print('Player wins!')
-                break
-            elif goal_sum == 7:
-                print(f'The sum of dice is {goal_sum}')
-                print('Casino wins!')
-                break
-            else:
-                print(f'The sum of dice is {goal_sum}')
-                continue 
 
-game()
+import random
+
+def menu():
+    print('''Hello, welcome to Craps game!''')
+    _ = input('Type yes if you want to play,any key to exit: ')
+    if _ == 'yes':
+        game()
+    else:
+        print('Thank you!')
+        
+def roll_dice():
+    step = input('Press ENTER to roll the dice')
+    num1 = random.randint(1,6)
+    num2 = random.randint(1,6)
+    return num1 + num2
+
+def game():
+    sum_of_dices = roll_dice()
+    if sum_of_dices in (7,11):
+        print(f'Number is {sum_of_dices}')
+        print('Player win!')
+    elif sum_of_dices in (2,3,12):
+        print(f'Number is {sum_of_dices}')
+        print('Casino win!')
+    else:
+        print(f'There is goal number {sum_of_dices}')
+        while True:
+            goal_sum = roll_dice()
+            if goal_sum == 7:
+                print(f'Goal number is {goal_sum}')
+                print('Casino win!')
+                break
+            elif goal_sum == sum_of_dices:
+                print(f'Number is {goal_sum}')
+                print('Player win!')
+            else:
+                print(f'Number is {goal_sum}')
+                continue
+            
+menu()
+        
